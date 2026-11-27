@@ -1,0 +1,11 @@
+{
+  "collectGift": true,
+  "thresholdHours": 24,
+  "allocationMode": "fixed",
+  "roomAllocations": {},
+  "requestIntervalMs": 2000,
+  "notify": {
+    "type": "none",
+    "key": ""
+  }
+}

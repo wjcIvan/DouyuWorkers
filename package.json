@@ -1,0 +1,23 @@
+{
+  "name": "douyu-worker",
+  "version": "0.1.0",
+  "private": true,
+  "description": "斗鱼荧光棒定时领取与临期赠送",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/index.js",
+    "job": "npm run build && node dist/index.js",
+    "dry-run": "npm run build && node dist/index.js --dry-run"
+  },
+  "dependencies": {
+    "ws": "^8.18.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.16.11",
+    "@types/ws": "^8.5.12",
+    "typescript": "^5.6.3"
+  }
+}
