@@ -30,7 +30,21 @@ jobs:
       - name: Install dependencies
         run: npm install --no-audit --no-fund
 
+      # 没有配置 Cookie 时直接跳过，避免模板仓库或尚未配置的仓库出现失败运行
+      - name: Check cookie
+        id: cookie
+        env:
+          DOUYU_COOKIE: ${{ secrets.DOUYU_COOKIE }}
+        run: |
+          if [ -n "$DOUYU_COOKIE" ] || [ -s .github/douyu_cookie.txt ]; then
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::未检测到 Cookie，已跳过本次运行。请按 README 第四步完成配置。"
+          fi
+
       - name: Run job
+        if: steps.cookie.outputs.ready == 'true'
         env:
           # 优先读取仓库内 .github/douyu_cookie.txt（由油猴脚本自动同步）
           # 如果没有该文件，才会使用下面 Secrets 里的 DOUYU_COOKIE
