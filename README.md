@@ -187,6 +187,9 @@ chore: update douyu cookie [skip ci]
 3. 左侧选择 **Douyu Daily Job** → 右侧点 **Run workflow** → 再点绿色 **Run workflow**
 4. 等十几秒刷新页面，点进这次运行记录 → 点 **run** 步骤查看日志
 
+> 说明：本项目（模板仓库）自身不会运行 Actions，只有你用模板创建出来的仓库才会跑。
+> 另外，如果仓库里既没有 `.github/douyu_cookie.txt` 也没有配置 `DOUYU_COOKIE`，任务会自动跳过并显示提示，不会报失败。
+
 日志正常的样子：
 
 ```
